@@ -25,18 +25,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //router
-app.use('/', indexRouter);
-app.use('/signup',require('./routes/signup'))
-app.use('/signin',require('./routes/signin'))
-app.use('/signout',require('./routes/signout'))
-app.use('/admin',require('./routes/admin'))
-app.use('/partner',require('./routes/partner'))
-app.use('/member',require('./routes/member'))
-app.use('/hotel',require('./routes/hotel'))
-app.use('/room',require('./routes/room'))
-app.use('/booking',require('./routes/booking'))
-app.use('/checkin',require('./routes/checkin'))
-app.use('/payment',require('./routes/payment'))
+const prefix = '/v2/nba-hotel'
+app.use(prefix+'/', indexRouter);
+app.use(prefix+'/signup',require('./routes/signup'))
+app.use(prefix+'/signin',require('./routes/signin'))
+app.use(prefix+'/signout',require('./routes/signout'))
+app.use(prefix+'/admin',require('./routes/admin'))
+app.use(prefix+'/partner',require('./routes/partner'))
+app.use(prefix+'/member',require('./routes/member'))
+app.use(prefix+'/hotel',require('./routes/hotel'))
+app.use(prefix+'/room',require('./routes/room'))
+app.use(prefix+'/booking',require('./routes/booking'))
+app.use(prefix+'/checkin',require('./routes/checkin'))
+app.use(prefix+'/payment',require('./routes/payment'))
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
